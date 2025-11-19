@@ -8,7 +8,8 @@ class Menu:
         print("3. Calcular angulo usando el Teorema del Coseno")
         print("4. Calcular lado usando el Teorema del Coseno")
         print("5. Salir")
-        obtenerOpcion = self.obtenerOpcion()
+        return self.obtenerOpcion()   # <-- AQUÍ ESTÁ EL ARREGLO
+
 
     def obtenerOpcion(self):
         funciones = {"1": self.ladoSeno}
