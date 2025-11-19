@@ -1,6 +1,4 @@
 from modelo.Triangulo import Triangulo as tri
-import os 
-class Menu:
 
     def mostrarMenu(self):
         os.system("cls")
@@ -16,7 +14,7 @@ class Menu:
         print("Saliendo del programa. ¡Hasta luego!")
         return
 
-    def obtenerOpcion(self):
+    def mostrarMenu(self):
         funciones = {
             "1": self.ladoSeno, 
             "2": self.anguloSeno,
@@ -43,7 +41,7 @@ class Menu:
         print("\nTu ecuación:")
         print(f"x / sin({angulo_conocido}°) = {lado_opuesto} / sin({angulo_opuesto}°)\n")
         print(f"Resultado: {resultado}\n")
-        return self.obtenerOpcion()
+        return False
 
     def anguloSeno(self):
         print("\nUsando el Teorema del Seno para calcular un ángulo:")
@@ -91,4 +89,8 @@ class Menu:
         print("\nTu ecuación:")
         print(f"cos(x°) = ({lado_a}² + {lado_b}² - {lado_c}²) / (2 * {lado_a} * {lado_b})\n")
         print(f"Resultado: {resultado}\n")
-        return self.obtenerOpcion()
+        return False
+
+    def salir(self):
+        print("Hasta luego.")
+        return True
