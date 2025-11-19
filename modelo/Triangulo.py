@@ -1,6 +1,7 @@
 import math
 
 class Triangulo:
+    # de momento no tiene ninguna utilidad
     def __init__(self, lado_a=None, lado_b=None, lado_c=None, 
                  angulo_A=None, angulo_B=None, angulo_C=None):
         self.lado_a = lado_a
