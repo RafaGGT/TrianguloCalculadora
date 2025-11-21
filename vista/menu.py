@@ -1,5 +1,5 @@
 from modelo.Triangulo import Triangulo as tri
-
+import os
 
 class Menu:
     def __init__(self):
@@ -11,9 +11,10 @@ class Menu:
             "2": self.anguloSeno,
             "3": self.anguloCoseno,
             "4": self.ladoCoseno,
-            "5": self.salir,
+            "5": self.salir
         }
         while True:
+            os.system("cls")
             print("=== Cálculo de Triángulos ===")
             print("1. Calcular lado usando el Teorema del Seno")
             print("2. Calcular ángulo usando el Teorema del Seno")
@@ -27,6 +28,7 @@ class Menu:
                 continue
             if accion():
                 break
+            input("Presione Enter para continuar...")
 
     def solicitar_float(self, mensaje, minimo=None, maximo=None):
         while True:
@@ -44,12 +46,14 @@ class Menu:
             return valor
 
     def ladoSeno(self):
-        lado_opuesto = self.solicitar_float("Ingrese el lado opuesto conocido: ", minimo=0)
+        print("-------------- Obtener lado (Teorema de seno) --------------")
+        print("X / sen(Ángulo A°) = Lado B / sen(Ángulo B°)\n")
+        lado_opuesto = self.solicitar_float("Ingrese el lado B: ", minimo=0)
         angulo_opuesto = self.solicitar_float(
-            "Ingrese el ángulo opuesto conocido (en grados): ", minimo=0, maximo=180
+            "Ingrese el ángulo B: ", minimo=0, maximo=180
         )
         angulo_conocido = self.solicitar_float(
-            "Ingrese el ángulo conocido (en grados): ", minimo=0, maximo=180
+            "Ingrese el ángulo A: ", minimo=0, maximo=180
         )
         try:
             resultado = self.triangulo.teorema_seno_lado(
@@ -64,11 +68,13 @@ class Menu:
         return False
 
     def anguloSeno(self):
-        lado_opuesto = self.solicitar_float("Ingrese el lado opuesto conocido: ", minimo=0)
+        print("-------------- Obtener Angulo (Teorema de seno) --------------")
+        print("Lado A / sen(Ángulo X°) = Lado B / sen(Ángulo B°)\n")
+        lado_opuesto = self.solicitar_float("Ingrese el lado B: ", minimo=0)
         angulo_opuesto = self.solicitar_float(
-            "Ingrese el ángulo opuesto conocido (en grados): ", minimo=0, maximo=180
+            "Ingrese el ángulo B : ", minimo=0, maximo=180
         )
-        lado_conocido = self.solicitar_float("Ingrese el lado conocido: ", minimo=0)
+        lado_conocido = self.solicitar_float("Ingrese el lado A: ", minimo=0)
         try:
             resultado = self.triangulo.teorema_seno_angulo(
                 lado_opuesto, angulo_opuesto, lado_conocido
@@ -77,11 +83,12 @@ class Menu:
             print(f"Error: {error}\n")
             return False
         print("\nTu ecuación:")
-        print(f"{lado_conocido} / sin(x°) = sin({angulo_opuesto}°) / {lado_opuesto}\n")
+        print(f"{lado_conocido} / sin(x°) = {lado_opuesto} / sin({angulo_opuesto}°) \n")
         print(f"Resultado: {resultado}\n")
         return False
 
     def anguloCoseno(self):
+        print("-------------- Obtener Angulo (Teorema de coseno) --------------")
         lado_a = self.solicitar_float("Ingrese el lado a: ", minimo=0)
         lado_b = self.solicitar_float("Ingrese el lado b: ", minimo=0)
         lado_c = self.solicitar_float("Ingrese el lado opuesto al ángulo buscado (c): ", minimo=0)
@@ -96,6 +103,7 @@ class Menu:
         return False
 
     def ladoCoseno(self):
+        print("-------------- Obtener Lado (Teorema de coseno) --------------")
         lado_a = self.solicitar_float("Ingrese el lado a: ", minimo=0)
         lado_b = self.solicitar_float("Ingrese el lado b: ", minimo=0)
         angulo_C = self.solicitar_float(

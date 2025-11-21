@@ -1,15 +1,10 @@
 import math
 
-class Triangulo:
-    def __init__(self, lado_a=None, lado_b=None, lado_c=None, 
-                 angulo_A=None, angulo_B=None, angulo_C=None):
-        self.lado_a = lado_a
-        self.lado_b = lado_b
-        self.lado_c = lado_c
-        self.angulo_A = angulo_A
-        self.angulo_B = angulo_B
-        self.angulo_C = angulo_C
 
+class Triangulo:
+    def __init__(self):
+        pass
+     
     def _validar_lado(self, valor, nombre):
         if valor is None or valor <= 0:
             raise ValueError(f"El lado {nombre} debe ser mayor que cero.")
@@ -22,8 +17,10 @@ class Triangulo:
         self._validar_lado(lado_opuesto, "opuesto")
         self._validar_angulo(angulo_opuesto, "opuesto")
         self._validar_angulo(angulo_conocido, "conocido")
+        # Convertir ángulos a radianes o grados según sea necesario
         angulo_opuesto_rad = math.radians(angulo_opuesto)
         angulo_conocido_rad = math.radians(angulo_conocido)
+        # Evitar división por cero si el seno del ángulo opuesto es cero
         denom = math.sin(angulo_opuesto_rad)
         if math.isclose(denom, 0.0, abs_tol=1e-9):
             raise ValueError("El ángulo opuesto no puede tener seno igual a cero.")
@@ -41,9 +38,11 @@ class Triangulo:
         return math.degrees(angulo_conocido_rad)
 
     def teorema_coseno_angulo(self, lado_a, lado_b, lado_c):
+        # Validar lados
         self._validar_lado(lado_a, "a")
         self._validar_lado(lado_b, "b")
         self._validar_lado(lado_c, "c")
+        # Calcular el ángulo C usando la ley del coseno
         divisor = 2 * lado_a * lado_b
         if math.isclose(divisor, 0.0, abs_tol=1e-12):
             raise ValueError("Los lados a y b deben ser distintos de cero.")
@@ -54,6 +53,7 @@ class Triangulo:
         return math.degrees(angulo_C_rad)
 
     def teorema_coseno_lado(self, lado_a, lado_b, angulo_C):
+        # Validar lados y ángulo
         self._validar_lado(lado_a, "a")
         self._validar_lado(lado_b, "b")
         self._validar_angulo(angulo_C, "C")
