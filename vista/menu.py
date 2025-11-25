@@ -88,10 +88,14 @@ class Menu:
         return False
 
     def anguloCoseno(self):
+        lado_a = "Lado A"
+        lado_b = "Lado B"
+        lado_c = "Lado C"
         print("-------------- Obtener Angulo (Teorema de coseno) --------------")
-        lado_a = self.solicitar_float("Ingrese el lado a: ", minimo=0)
-        lado_b = self.solicitar_float("Ingrese el lado b: ", minimo=0)
-        lado_c = self.solicitar_float("Ingrese el lado opuesto al ángulo buscado (c): ", minimo=0)
+        print(f"cos(C) = ({lado_a}^2 + {lado_b}^2 - {lado_c}^2) / (2 * {lado_a} * {lado_b})\n")
+        lado_a = self.solicitar_float("Ingrese el lado A: ", minimo=0)
+        lado_b = self.solicitar_float("Ingrese el lado B: ", minimo=0)
+        lado_c = self.solicitar_float("Ingrese el lado opuesto al ángulo buscado (C): ", minimo=0)
         try:
             resultado = self.triangulo.teorema_coseno_angulo(lado_a, lado_b, lado_c)
         except ValueError as error:
@@ -103,11 +107,17 @@ class Menu:
         return False
 
     def ladoCoseno(self):
+        lado_a = "Lado A"
+        lado_b = "Lado B"
+        angulo_C = "Ángulo C"
         print("-------------- Obtener Lado (Teorema de coseno) --------------")
-        lado_a = self.solicitar_float("Ingrese el lado a: ", minimo=0)
-        lado_b = self.solicitar_float("Ingrese el lado b: ", minimo=0)
+        print(
+            f"c^2 = {lado_a}^2 + {lado_b}^2 - 2 * {lado_a} * {lado_b} * cos({angulo_C}°)\n"
+        )
+        lado_a = self.solicitar_float("Ingrese el lado A: ", minimo=0)
+        lado_b = self.solicitar_float("Ingrese el lado B: ", minimo=0)
         angulo_C = self.solicitar_float(
-            "Ingrese el ángulo incluido (en grados): ", minimo=0, maximo=180
+            "Ingrese el ángulo C que esta entre los lados: ", minimo=0, maximo=180
         )
         try:
             resultado = self.triangulo.teorema_coseno_lado(lado_a, lado_b, angulo_C)
