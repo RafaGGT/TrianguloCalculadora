@@ -92,7 +92,8 @@ class Menu:
         lado_b = "Lado B"
         lado_c = "Lado C"
         print("-------------- Obtener Angulo (Teorema de coseno) --------------")
-        print(f"cos(C) = ({lado_a}^2 + {lado_b}^2 - {lado_c}^2) / (2 * {lado_a} * {lado_b})\n")
+        print(f"Lado C^(2)=Lado A^(2)+ Lado B ^(2)-2* Lado A * Lado B cos(x)\n")
+        
         lado_a = self.solicitar_float("Ingrese el lado A: ", minimo=0)
         lado_b = self.solicitar_float("Ingrese el lado B: ", minimo=0)
         lado_c = self.solicitar_float("Ingrese el lado opuesto al ángulo buscado (C): ", minimo=0)
@@ -102,8 +103,8 @@ class Menu:
             print(f"Error: {error}\n")
             return False
         print("\nTu ecuación:")
-        print(f"cos(C) = ({lado_a}^2 + {lado_b}^2 - {lado_c}^2) / (2 * {lado_a} * {lado_b})\n")
-        print(f"Resultado: {resultado}\n")
+        print(f"{lado_c}^(2)={lado_a}^(2)+ {lado_b} ^(2)-2* {lado_a} * {lado_b} cos(x)\n")
+        print(f"Resultado (Angulo C): {resultado}\n")
         return False
 
     def ladoCoseno(self):
